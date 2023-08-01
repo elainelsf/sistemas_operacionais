@@ -1,0 +1,111 @@
+.primary-content {
+  background-color: #090d11;
+  width: 100%;
+  min-height: 80vh;
+  flex-direction: column;
+  display: flex;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.primary-content__round-robin,
+.primary-content__preemptiva,
+.primary-content__bestfit {
+  background-color: #090d11;
+  width: 24%;
+  min-height: 80vh;
+  flex-direction: column;
+  display: flex;
+  padding: 2rem;
+  gap: 1rem;
+}
+.second-process {
+  width: 75%;
+  //  padding: 10px;
+  display: block;
+  justify-content: space-between;
+}
+
+.processForm {
+  background-color: $secondary-dark;
+  width: 25rem;
+  padding: 6px 10px;
+  margin-left: 2rem;
+
+  input {
+    display: block;
+  }
+}
+
+#executionOrder {
+  display: block;
+}
+
+/* TESTE AQUI */
+.nav-button {
+  border: 0;
+  cursor: pointer;
+  background: none;
+  font-size: 1rem;
+}
+
+.nav-button {
+  color: #ffffff;
+}
+
+.overlay {
+  width: 35%;
+  height: 100%;
+  /* background-color: black; */
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  transition: all 0.5s;
+
+}
+
+.overlay-content{
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus{
+  color: #34024b;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 25px;
+  right: 45px;
+  font-size: 25px;
+}
+
+@media screen and (max-height: 450px){
+  .overlay a {font-size: 20px;}
+  .overlay, .closebtn{
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+  
+}
+
+
+/* FINALIZA TESTE AQUI */

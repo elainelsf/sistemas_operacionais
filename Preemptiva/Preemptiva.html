@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Escalonamento por Prioridade Preemptiva</title>
+</head>
+<body>
+  <h1>Escalonamento por Prioridade Preemptiva</h1>
+  <div>
+    <label for="id">ID:</label>
+    <input type="text" id="id" />
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" />
+    <label for="tempoExecucao">Tempo de Execução:</label>
+    <input type="text" id="tempoExecucao" />
+    <label for="prioridade">Prioridade:</label>
+    <input type="text" id="prioridade" />
+    <button onclick="adicionarProcesso()">Adicionar</button>
+    <button onclick="executarEscalonamento()">Executar Escalonamento</button>
+  </div>
+  <div id="processos-adicionados">
+    <!-- Aqui será exibida a lista de processos adicionados -->
+  </div>
+  <div id="resultado-escalonamento">
+    <!-- Aqui será exibido o resultado do escalonamento -->
+  </div>
+  <script>
+    let processos = [];
+
+    function adicionarProcesso() {
+      const id = document.getElementById("id").value;
+      const nome = document.getElementById("nome").value;
+      const tempoExecucao = parseInt(document.getElementById("tempoExecucao").value);
+      const prioridade = parseInt(document.getElementById("prioridade").value);
+
+      if (!isNaN(tempoExecucao) && !isNaN(prioridade)) {
+        processos.push({ id, nome, tempoExecucao, prioridade });
+        atualizarListaProcessos();
+        limparCampos();
+      } else {
+        alert("Por favor, insira um tempo de execução e prioridade válidos.");
+      }
+    }
+
+    function limparCampos() {
+      document.getElementById("id").value = "";
+      document.getElementById("nome").value = "";
+      document.getElementById("tempoExecucao").value = "";
+      document.getElementById("prioridade").value = "";
+    }
+
+    function atualizarListaProcessos() {
+      const listaProcessos = document.getElementById("processos-adicionados");
+      listaProcessos.innerHTML = "<strong>Processos Adicionados:</strong><br>";
+      processos.forEach((processo) => {
+        listaProcessos.innerHTML += `ID: ${processo.id}, Nome: ${processo.nome}, Tempo de Execução: ${processo.tempoExecucao}, Prioridade: ${processo.prioridade}<br>`;
+      });
+    }
+
+    function escalonarProcessos(processos) {
+      let tempoTotalExecucao = 0;
+      let tempoEsperaTotal = 0;
+      let processosEscalonados = [];
+
+      while (processos.length > 0) {
+        processos.sort((a, b) => a.prioridade - b.prioridade);
+
+        const processoAtual = processos.shift();
+        const tempoExecucao = Math.min(processoAtual.tempoExecucao, 1);
+
+        processoAtual.tempoExecucao -= tempoExecucao;
+        tempoTotalExecucao += tempoExecucao;
+
+        for (const processo of processos) {
+          tempoEsperaTotal += tempoExecucao;
+        }
+
+        if (processoAtual.tempoExecucao > 0) {
+          processos.push(processoAtual);
+        }
+
+        processosEscalonados.push({ ...processoAtual, tempoExecutado: tempoExecucao });
+      }
+
+      const tempoMedioEspera = tempoEsperaTotal / processosEscalonados.length;
+      return { tempoTotalExecucao, tempoMedioEspera, processosEscalonados };
+    }
+
+    function exibirResultadoEscalonamento(resultado) {
+      const resultadoDiv = document.getElementById("resultado-escalonamento");
+      resultadoDiv.innerHTML = `<strong>Tempo Total de Execução:</strong> ${resultado.tempoTotalExecucao}<br>`;
+      resultadoDiv.innerHTML += `<strong>Tempo Médio de Espera:</strong> ${resultado.tempoMedioEspera}<br><br>`;
+      resultadoDiv.innerHTML += "<strong>Processos Escalonados:</strong><br>";
+      resultado.processosEscalonados.forEach((processo) => {
+        resultadoDiv.innerHTML += `ID: ${processo.id}, Nome: ${processo.nome}, Tempo de Execução: ${processo.tempoExecutado}, Prioridade: ${processo.prioridade}<br>`;
+      });
+    }
+
+    function executarEscalonamento() {
+      if (processos.length === 0) {
+        alert("Por favor, adicione pelo menos um processo antes de executar o escalonamento.");
+        return;
+      }
+
+      const resultadoEscalonamento = escalonarProcessos([...processos]);
+      exibirResultadoEscalonamento(resultadoEscalonamento);
+    }
+  </script>
+</body>
+</html>

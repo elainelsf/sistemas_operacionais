@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Best-Fit Memory Allocation</title>
+  <style>
+    .bloco-memoria {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Best-Fit Memory Allocation</h1>
+  <div>
+    <label for="tamanhoBloco">Tamanho do Bloco Necessário:</label>
+    <input type="text" id="tamanhoBloco" />
+    <button onclick="alocarMemoria()">Alocar Memória</button>
+    <button onclick="criarBlocoVazio()">Criar Bloco Vazio</button>
+  </div>
+  <div id="blocos-memoria">
+    <!-- Aqui serão representados visualmente os blocos de memória -->
+  </div>
+  <div id="resultado-alocacao">
+    <!-- Aqui será exibido o resultado da alocação -->
+  </div>
+  <script>
+    let blocosMemoria = [];
+
+    function gerarTamanhoAleatorio() {
+      return Math.floor(Math.random() * 128 + 1); // Gerar tamanhos aleatórios entre 1 e 128 MB
+    }
+
+    function alocarBestFit(blocosMemoria, tamanhoBlocoNecessario) {
+      let indiceBlocoAlocado = -1;
+      let tamanhoBlocoAlocado = Number.MAX_SAFE_INTEGER;
+
+      for (let i = 0; i < blocosMemoria.length; i++) {
+        const blocoAtual = blocosMemoria[i];
+
+        if (blocoAtual.tamanho >= tamanhoBlocoNecessario && !blocoAtual.alocado && blocoAtual.tamanho < tamanhoBlocoAlocado) {
+          indiceBlocoAlocado = i;
+          tamanhoBlocoAlocado = blocoAtual.tamanho;
+        }
+      }
+
+      return indiceBlocoAlocado;
+    }
+
+    function alocarMemoria() {
+      const tamanhoBlocoNecessario = parseInt(document.getElementById("tamanhoBloco").value);
+
+      if (!isNaN(tamanhoBlocoNecessario)) {
+        const indiceBlocoAlocado = alocarBestFit(blocosMemoria, tamanhoBlocoNecessario);
+
+        if (indiceBlocoAlocado !== -1) {
+          const blocoAlocado = blocosMemoria[indiceBlocoAlocado];
+          blocoAlocado.alocado = true;
+
+          const resultadoDiv = document.getElementById("resultado-alocacao");
+          resultadoDiv.innerHTML = `Bloco alocado: ID ${blocoAlocado.id}, Tamanho ${blocoAlocado.tamanho} MB`;
+        } else {
+          alert("Nenhum bloco adequado encontrado para alocar a memória.");
+        }
+
+        atualizarBlocosMemoria();
+      } else {
+        alert("Por favor, insira um tamanho de bloco necessário válido.");
+      }
+    }
+
+    function criarBlocoVazio() {
+      const id = blocosMemoria.length + 1;
+      const tamanho = gerarTamanhoAleatorio();
+
+      blocosMemoria.push({ id, tamanho, alocado: false });
+      atualizarBlocosMemoria();
+    }
+
+    function atualizarBlocosMemoria() {
+      const blocosMemoriaDiv = document.getElementById("blocos-memoria");
+      blocosMemoriaDiv.innerHTML = "<strong>Blocos de Memória:</strong><br>";
+      blocosMemoria.forEach((bloco) => {
+        const blocoDiv = document.createElement("div");
+        blocoDiv.classList.add("bloco-memoria");
+        blocoDiv.textContent = bloco.tamanho;
+        if (bloco.alocado) {
+          blocoDiv.style.backgroundColor = "#66bb6a"; // Altera a cor do bloco alocado
+        }
+        blocoDiv.style.width = `${(bloco.tamanho / 2)}px`; // Ajusta o tamanho do bloco proporcionalmente
+        blocosMemoriaDiv.appendChild(blocoDiv);
+      });
+    }
+  </script>
+</body>
+</html>

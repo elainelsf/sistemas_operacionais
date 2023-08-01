@@ -1,0 +1,120 @@
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.primary-content {
+  background-color: $secondary-normal;
+  width: 20%;
+  min-height: 80vh;
+  flex-direction: column;
+
+  padding-top: 15px;
+  padding-left: 15px;
+
+  h2 {
+    color: $violet;
+    box-shadow: 0 -1px 17px -4px rgba(0, 255, 255, 0.45);
+  }
+}
+
+.second-content {
+  background-color: transparent;
+  width: 80%;
+  min-height: 80vh;
+}
+
+ul {
+  li {
+    margin: 8px 0;
+  }
+  a {
+    font-size: 24px;
+    //padding: 38px 0;
+  }
+
+  :hover {
+    a {
+      transition: color 0.5s;
+      color: $red-dark;
+    }
+  }
+}
+
+/* TESTE AQUI */
+.nav-button {
+  border: 0;
+  cursor: pointer;
+  background: none;
+  font-size: 1rem;
+}
+
+.nav-button {
+  color: #ffffff;
+}
+
+.overlay {
+  width: 35%;
+  height: 100%;
+  /* background-color: black; */
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  transition: all 0.5s;
+
+}
+
+.overlay-content{
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus{
+  color: #34024b;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 25px;
+  right: 45px;
+  font-size: 25px;
+}
+
+@media screen and (max-height: 450px){
+  .overlay a {font-size: 20px;}
+  .overlay, .closebtn{
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+  
+}
+
+
+/* FINALIZA TESTE AQUI */
+
+//----------------------------------------------------------------
+
+section h2 {
+  padding-top: 15px;
+  padding-left: 32px;
+  font-size: 32px;
+  color: $violet;
+}

@@ -1,0 +1,56 @@
+.container {
+  max-width: 1324px;
+  margin: 0 auto;
+  padding: 10px 8px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+//BG HOME
+
+.bg-home {
+  position: relative;
+  background-color: $primary-light;
+}
+
+header {
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  height: 10vh;
+}
+
+i {
+  color: $white-normal;
+}
+
+.hero h1 {
+  //   box-shadow: 0 -1px 17px -4px rgba(255, 255, 255, 0.45);
+  //   padding: 1px 5px;
+  text-align: center;
+}
+
+.header-icons {
+  display: flex;
+  gap: 14px;
+}
+.header-icons a:hover {
+  i {
+    color: $red-light;
+    animation: translateY 0.8s infinite alternate-reverse;
+  }
+}
+
+@keyframes translateY {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-8px) scale(1.1);
+  }
+}
+
+//confirguração  para responsividade

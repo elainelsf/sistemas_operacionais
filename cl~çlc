@@ -1,0 +1,35 @@
+[33mcommit 6737c362c2fadff99c3a105fa54d09cc1787c2c0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Douglas <douglas@3xweb.site>
+Date:   Mon Jul 31 23:55:09 2023 -0300
+
+    novo best-fit
+
+[33mcommit 0ac1d8c1b14d61ddc459f3f48d664c9139c06aca[m
+Author: Douglas <douglas@3xweb.site>
+Date:   Mon Jul 31 23:34:23 2023 -0300
+
+    melhorias no algoritmo e apresentação
+
+[33mcommit 0060d7e1e54f139ba1ec235d5f1c56d7ec457b95[m
+Author: Milton-Neves <milzonzneves@gmail.com>
+Date:   Mon Jul 31 22:43:19 2023 -0300
+
+    correção de erros 2
+
+[33mcommit 016a39462257516bbf0e2fee343f20bc9be20d1e[m
+Author: Milton-Neves <milzonzneves@gmail.com>
+Date:   Mon Jul 31 22:36:12 2023 -0300
+
+    correção de erros
+
+[33mcommit e93f1f3ca736cfae899a95310816aee3889696e6[m
+Author: milton.neto <milton.neto@parnamirim.rn.gov.br>
+Date:   Mon Jul 31 16:43:03 2023 -0300
+
+    style: atualização
+
+[33mcommit b7459288198afcbdd97fdaa8200e2691341dd839[m
+Author: Milton-Neves <milzonzneves@gmail.com>
+Date:   Mon Jul 31 07:28:28 2023 -0300
+
+    feat: adding styles

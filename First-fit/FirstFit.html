@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="../style.css" />
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <title>Simulador</title>
+  </head>
+
+  <body>
+    <div class="bg-home">
+      <header>
+        <div class="hero container">
+          <h1>SIMULADORES DE ALGORITMOS COM JAVASCRIPT</h1>
+          <img src="/assets/icons/js.svg" style="width: 24px" alt="" />
+        </div>
+      </header>
+    </div>
+
+    <main>
+      <div class="content">
+        <div class="content">
+          <div class="primary-content">
+            <div class="home">
+              <a href="../index.html">
+                <img src="/assets/icons/home.svg" style="width: 24px" alt="" />
+                HOME
+              </a>
+            </div>
+
+            <div id="myNav" class="overlay">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+                >&times;</a
+              >
+
+              <div class="overlay-content">
+                <a href="../index.html">Home</a>
+                <a href="../First-fit/FirstFit.html">First-Fit</a>
+                <a href="../RoundRobin/RoundRobin.html">Round Robin</a>
+                <a href="../Prioridade/Prioridade.html"
+                  >Escalonador por prioridade</a
+                >
+                <a href="../BestFit/BestFit.html">Best-Fit</a>
+                <a href="../Preemptiva/Preemptiva.html">Preemptiva</a>
+                <a href="../Processo/Processo.html">Escalonador de processos</a>
+              </div>
+            </div>
+            <a class="nav-button" onclick="openNav()">SIMULADORES</a>
+          </div>
+        </div>
+
+        <section class="second-content-form">
+          <h2>Simulador First-Fit</h2>
+
+          <div class="form">
+            <div>
+              <form id="memoryAllocationForm">
+                <label for="block1">Bloco 1:</label>
+                <input type="number" id="block1" />
+
+                <label for="block2">Bloco 2:</label>
+                <input type="number" id="block2" />
+
+                <label for="block3">Bloco 3:</label>
+                <input type="number" id="block3" />
+
+                <label for="block4">Bloco 4:</label>
+                <input type="number" id="block4" />
+
+                <label for="block5">Bloco 5:</label>
+                <input type="number" id="block5" />
+
+                <label for="block6">Bloco 6:</label>
+                <input type="number" id="block6" />
+
+                <label for="requiredSize">Tamanho Necessário:</label>
+                <input type="number" id="requiredSize" />
+
+                <button
+                  type="button"
+                  class="btn-button"
+                  onclick="allocateMemory()"
+                >
+                  Alocar Memória
+                </button>
+              </form>
+            </div>
+
+            <h3>Resultado:</h3>
+            <div class="resultado">
+              <span id="result"></span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
